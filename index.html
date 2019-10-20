@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+</head>
+<body>
+<div id="result"></div>
+<table>
+    <tr>
+        <td>
+            <button onClick="doClear('c')">c</button>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+            <button onClick="inputOpe('+');">+</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onClick="inputNum('1')">1</button>
+        </td>
+        <td>
+            <button onClick="inputNum('2')">2</button>
+        </td>
+        <td>
+            <button onClick="inputNum('3')">3</button>
+        </td>
+        <td>
+            <button onClick="inputOpe('*');">*</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onClick="inputNum('4')">4</button>
+        </td>
+        <td>
+            <button onClick="inputNum('5')">5</button>
+        </td>
+        <td>
+            <button onClick="inputNum('6')">6</button>
+        </td>
+        <td>
+            <button onClick="inputOpe('/');">/</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onClick="inputNum('7')">7</button>
+        </td>
+        <td>
+            <button onClick="inputNum('8')">8</button>
+        </td>
+        <td>
+            <button onClick="inputNum('9')">9</button>
+        </td>
+        <td>
+            <button onClick="inputOpe('-');">-</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onClick="inputNum('0')">0</button>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+            <button onClick="doCalc('=');">=</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
